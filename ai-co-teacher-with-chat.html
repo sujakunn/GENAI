@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Co-Teacher | GenAI Learn+</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --secondary: #6d28d9;
+      --bot-bg: #ffffff;
+      --user-bg: #dcf8c6;
+      --bubble-radius: 18px;
+    }
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: #fff;
+    }
+    header {
+      background: #1e1b4b;
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+    section {
+      background: #fff;
+      color: #333;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      padding: 30px;
+      margin-bottom: 40px;
+    }
+    h2 {
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    ul li {
+      margin-bottom: 8px;
+    }
+
+    .example-box {
+      background: #f0f4ff;
+      border-left: 5px solid var(--primary);
+      padding: 16px;
+      margin-top: 10px;
+      border-radius: 10px;
+      font-style: italic;
+    }
+
+    .chat-box {
+      height: 360px;
+      overflow-y: auto;
+      background: #ece5dd;
+      border-radius: 12px;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      scroll-behavior: smooth;
+    }
+
+    .message {
+      padding: 12px 16px;
+      border-radius: var(--bubble-radius);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      max-width: 70%;
+      word-break: break-word;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .bot {
+      align-self: flex-start;
+      background: var(--bot-bg);
+      border-bottom-left-radius: 0;
+    }
+
+    .user {
+      align-self: flex-end;
+      background: var(--user-bg);
+      border-bottom-right-radius: 0;
+    }
+
+    .chat-input {
+      display: flex;
+      margin-top: 12px;
+      gap: 10px;
+    }
+
+    .chat-input input {
+      flex: 1;
+      border-radius: 24px;
+      padding: 10px 16px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+    }
+
+    .chat-input button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .chat-input button:hover {
+      background: #4338ca;
+    }
+
+    a.back {
+      display: inline-block;
+      margin-top: 30px;
+      text-decoration: none;
+      background: #4c1d95;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+    }
+    a.back:hover {
+      background: #3b0764;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🤖 AI Co-Teacher</h1>
+</header>
+
+<main>
+  <section>
+    <h2>Apa Itu AI Co-Teacher?</h2>
+    <p>AI Co-Teacher adalah asisten cerdas berbasis kecerdasan buatan yang membantu guru dalam berbagai aspek proses pembelajaran, mulai dari menyusun materi ajar, mengoreksi tugas siswa secara otomatis, hingga memberikan umpan balik personal berdasarkan data performa siswa.</p>
+  </section>
+
+  <section>
+    <h2>Contoh Implementasi Nyata</h2>
+    <div class="example-box">
+      Di SMP Negeri 4 Semarang, guru menggunakan AI Co-Teacher untuk mendeteksi siswa yang mengalami penurunan partisipasi dalam kelas daring. AI memberikan rekomendasi konten visual dan kuis interaktif yang lebih cocok dengan gaya belajar siswa tersebut. Hasilnya, nilai kuis siswa meningkat 15% dalam dua minggu.
+    </div>
+  </section>
+
+  <section>
+    <h2>Fitur Utama</h2>
+    <ul>
+      <li>📘 Menyusun materi ajar otomatis berdasarkan kurikulum dan minat siswa</li>
+      <li>📝 Koreksi tugas dan penilaian formatif dengan laporan kemajuan real-time</li>
+      <li>💬 Feedback reflektif & personal berdasarkan analisis data pembelajaran</li>
+      <li>👩‍🏫 Membantu guru mengidentifikasi potensi tersembunyi siswa</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Simulasi Chat AI Co-Teacher</h2>
+    <div class="chat-box" id="chatbox">
+      <div class="message bot">👋 Hai! Saya Co-Teacher AI kamu. Mau tanya apa hari ini?</div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="userInput" placeholder="Tulis pertanyaanmu di sini..." />
+      <button onclick="handleChat()">Kirim</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Manfaat untuk Guru dan Siswa</h2>
+    <ul>
+      <li>🔧 Menghemat waktu guru hingga 40% dalam administrasi pembelajaran</li>
+      <li>🎯 Meningkatkan akurasi penilaian dan objektivitas</li>
+      <li>🧠 Memfasilitasi pembelajaran yang lebih adaptif dan relevan</li>
+      <li>💡 Memberdayakan guru menjadi mentor, bukan sekadar pengajar</li>
+    </ul>
+  </section>
+
+  <a href="/" class="back">← Kembali ke Beranda</a>
+</main>
+
+<script>
+  async function handleChat() {
+    const input = document.getElementById("userInput");
+    const chatbox = document.getElementById("chatbox");
+    const text = input.value.trim();
+    if (!text) return;
+
+    const userMsg = document.createElement("div");
+    userMsg.className = "message user";
+    userMsg.textContent = text;
+    chatbox.appendChild(userMsg);
+    input.value = "";
+
+    const botMsg = document.createElement("div");
+    botMsg.className = "message bot";
+    botMsg.textContent = "✍️ AI sedang mengetik...";
+    chatbox.appendChild(botMsg);
+    chatbox.scrollTop = chatbox.scrollHeight;
+
+    try {
+      const response = await fetch("/ask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt: text })
+      });
+      const data = await response.json();
+      botMsg.textContent = data.reply;
+      chatbox.scrollTop = chatbox.scrollHeight;
+    } catch (error) {
+      botMsg.textContent = "⚠️ Gagal menghubungkan ke AI!";
+    }
+  }
+
+  document.getElementById("userInput").addEventListener("keydown", function(e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleChat();
+    }
+  });
+</script>
+
+</body>
+</html>

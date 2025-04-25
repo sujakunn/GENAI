@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GenAI Learn+</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+    body {
+      background: linear-gradient(to right, #4f46e5, #6d28d9);
+      color: white;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 40px 60px;
+      background: linear-gradient(to bottom right, #6d28d9, #7c3aed);
+      flex-wrap: wrap;
+    }
+
+    header img {
+      width: 80px;
+    }
+
+    .header-text {
+      flex: 1;
+      padding-left: 30px;
+      min-width: 250px;
+    }
+
+    .header-text h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      animation: fadeInDown 1s ease-in-out;
+    }
+
+    .header-text p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    .cta {
+      display: inline-block;
+      background: #22d3ee;
+      color: #000;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: 0.3s ease-in-out;
+    }
+
+    .cta:hover {
+      background: #0ea5e9;
+      transform: scale(1.05);
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2.3rem;
+      margin-bottom: 40px;
+    }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: white;
+      color: #333;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.15);
+    }
+
+    .card img {
+      width: 60px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      color: #4f46e5;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 18px;
+      background: #4f46e5;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .card a:hover {
+      background: #3730a3;
+    }
+
+    footer {
+      background: #1e1b4b;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.9rem;
+      margin-top: 60px;
+    }
+
+    @keyframes fadeInDown {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+      }
+      .header-text {
+        padding-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo GenAI Learn+">
+  <div class="header-text">
+    <h1>GenAI Learn+</h1>
+    <p>Inovasi Pendidikan Adaptif Menuju Generasi Emas Indonesia 2045</p>
+    <a href="#pilar" class="cta">Jelajahi 4 Pilar Inovasi</a>
+  </div>
+</header>
+
+<section id="pilar">
+  <h2>🔬 4 Pilar Inovasi GenAI Learn+</h2>
+  <div class="card-container">
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/4712/4712103.png" alt="AI Co-Teacher Icon">
+      <h3>🤖 AI Co-Teacher</h3>
+      <p>Asisten AI yang membantu guru menyusun materi ajar, koreksi otomatis, dan umpan balik personal.</p>
+      <a href="/ai-co-teacher">Pelajari lebih lanjut</a>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/3449/3449776.png" alt="LIS Icon">
+      <h3>📊 Learning Intelligence System</h3>
+      <p>Sistem cerdas yang membaca gaya belajar siswa dan menyesuaikan pembelajaran secara real-time.</p>
+      <a href="/learning-intelligence">Pelajari lebih lanjut</a>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/1814/1814494.png" alt="Ethics Icon">
+      <h3>🧠 Kurikulum Etika & Literasi AI</h3>
+      <p>Menanamkan kesadaran digital, privasi, dan pemikiran etis terhadap teknologi sejak dini.</p>
+      <a href="/etika-ai">Pelajari lebih lanjut</a>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/3438/3438460.png" alt="Ecosystem Icon">
+      <h3>🌐 Ekosistem Kolaboratif</h3>
+      <p>Jembatan sinergi antara sekolah, industri, dan pemerintah lewat hackathon & magang digital.</p>
+      <a href="/ekosistem-kolaboratif">Pelajari lebih lanjut</a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>“Pendidikan masa depan bukan hanya tentang teknologi, melainkan membentuk manusia yang mengarahkan teknologi.”</p>
+  <p>© 2025 GenAI Learn+ | Transformasi Pendidikan AI</p>
+</footer>
+
+</body>
+</html>
